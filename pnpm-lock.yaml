@@ -15,8 +15,8 @@ importers:
         specifier: 4.0.0
         version: 4.0.0
       select2:
-        specifier: 4.1.0-rc.0
-        version: 4.1.0-rc.0
+        specifier: 4.1.0
+        version: 4.1.0
       sql.js:
         specifier: 1.14.1
         version: 1.14.1
@@ -300,8 +300,9 @@ packages:
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
 
-  select2@4.1.0-rc.0:
-    resolution: {integrity: sha512-Hr9TdhyHCZUtwznEH2CBf7967mEM0idtJ5nMtjvk3Up5tPukOLXbHUNmh10oRfeNIhj+3GD3niu+g6sVK+gK0A==}
+  select2@4.1.0:
+    resolution: {integrity: sha512-i9KalWOP4/LRRGc8+rj2krNm0ZqP14cV+j1TRCEBSsOhCPkKH8rYZ2MCRXcgvqIqN+llqGci0hj9aVkCMvL0+g==}
+    engines: {node: '>=24'}
 
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
@@ -567,7 +568,7 @@ snapshots:
       '@rolldown/binding-win32-arm64-msvc': 1.0.2
       '@rolldown/binding-win32-x64-msvc': 1.0.2
 
-  select2@4.1.0-rc.0: {}
+  select2@4.1.0: {}
 
   source-map-js@1.2.1: {}
 
