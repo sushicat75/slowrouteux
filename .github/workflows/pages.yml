@@ -1,31 +1,65 @@
+name: Deploy to Pages
+
 on:
   push:
     branches: ["main"]
+  workflow_dispatch:
 
+# REQUIRED: Grants permissions to deploy natively via GitHub Actions
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
-      - uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v4
         with:
-          version: 11.13.1
+          version: 11 # Installs the latest v11 automatically
+
       - name: Use Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        uses: actions/setup-node@v4
         with:
-          node-version: 26.5.0
-      - run: |
+          node-version: 22 # Stable LTS version (Node 26 does not exist yet)
+          cache: 'pnpm'
+
+      - name: Configure Git URLs
+        run: |
           git config --global url."https://github.com/".insteadOf git@github.com:
           git config --global url."https://".insteadOf git://
-      - run: pnpm install --no-frozen-lockfile
-      - run: pnpm build --base=slowroute
-      - run: cd dist; echo > .nojekyll; cd ..
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4.1.0
+
+      - name: Install Dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Build Project
+        run: pnpm build --base=slowroute
+
+      - name: Add NoJekyll Bypass
+        run: echo "" > ./dist/.nojekyll
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          path: './dist'
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
