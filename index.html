@@ -35,10 +35,10 @@
     <br />
 
     <fieldset class="option-group">
-      <legend>Route by</legend>
+      <legend>Transport modes</legend>
       <div class="option-list">
         <label class="option-item" for="route-by-air"><input type="checkbox" id="route-by-air" /> Air</label>
-        <label class="option-item" for="route-by-bus"><input type="checkbox" id="route-by-bus" /> Bus</label>
+        <label class="option-tem" for="route-by-bus"><input type="checkbox" id="route-by-bus" /> Bus</label>
         <label class="option-item" for="route-by-rail"><input type="checkbox" id="route-by-rail" /> Rail</label>
         <label class="option-item" for="route-by-sea"><input type="checkbox" id="route-by-sea" /> Sea</label>
         <label class="option-item" for="route-by-spawn-warp"><input type="checkbox" id="route-by-spawn-warp" /> Spawn Warp</label>
@@ -50,7 +50,7 @@
     </fieldset>
 
     <fieldset class="option-group">
-      <legend>Speed</legend>
+      <legend>Speed calculations<legend>
       <div class="option-list">
         <label class="option-item" for="prox-walk"><input type="radio" id="prox-walk" name="prox" /> Walking/Running</label>
         <label class="option-item" for="prox-walk10"><input type="radio" id="prox-walk10" name="prox" /> Walking/Running (speed 10)</label>
@@ -60,9 +60,13 @@
     </fieldset>
     <br />
 
-    <p style="text-align:center;"><button id="go">Go</button></p>
-
-    <div id="out"></div>
+          <p style="text-align:center;"><button id="go">Go</button></p>
+        
+      <fieldset>
+        <legend>Route</legend>
+           <div id="out"></div>
+      </fieldset>
+ 
 
     <footer><p style="text-align:center;"><a href="https://github.com/sushicat75/slowrouteux">Repo</a></p>
     </footer>
