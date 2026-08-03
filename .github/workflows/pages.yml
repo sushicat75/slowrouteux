@@ -23,15 +23,12 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
         with:
-          version: 11.17.0
+          version: 11.18.0
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22 # Stable LTS version (Node 26 does not exist yet)
-          cache: 'pnpm'
-
-      - name: Configure Git URLs
-        run: |
+          node-version: 26.5.1
+      - run: |
           git config --global url."https://github.com/".insteadOf git@github.com:
           git config --global url."https://".insteadOf git://
 
