@@ -1,75 +1,129 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://unpkg.com/simpledotcss/simple.css">
-    <style>fieldset {
-  min-width: 0;
-  width: 100%;
-}
-</style>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <script defer type="module" src="./src/main.ts"></script>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://unpkg.com/simpledotcss/simple.css" />
+    <style>
+      fieldset {
+        min-width: 0;
+        width: 100%;
+      }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="./src/main.ts"></script>
     <title>slowroute</title>
   </head>
   <body>
-    <header><h1>slowroute ux</h1>
-    <h3>a routing service for the Minecart Rapid Transit server, with better UI.</h3></header>
-   <main>
-       <fieldset>
-       <div class="dropdown-container">
-    <label for="from">From</label>
-    <select id="from"></select>
-    <button id="from-random">Random</button>
-    </div>
-    </fieldset>
-    <br>
-
-<fieldset>
-<div class="dropdown-container">
-    <label for="to">To</label>
-    <select id="to"></select>
-    <button id="to-random">Random</button>
-    <div class="dropdown-container">
-        </fieldset>
-    <br>
-
-    <fieldset class="option-group">
-      <legend>Transport modes</legend>
-      <div class="option-list">
-        <label class="option-item" for="route-by-air"><input type="checkbox" id="route-by-air"/> Air</label>
-        <label class="option-tem" for="route-by-bus"><input type="checkbox" id="route-by-bus"/> Bus</label>
-        <label class="option-item" for="route-by-rail"><input type="checkbox" id="route-by-rail" /> Rail</label>
-        <label class="option-item" for="route-by-sea"><input type="checkbox" id="route-by-sea" /> Sea</label>
-        <label class="option-item" for="route-by-spawn-warp"><input type="checkbox" id="route-by-spawn-warp" /> Spawn Warp</label>
-        <label class="option-item" for="route-by-traincarts"><input type="checkbox" id="route-by-traincarts" /> TrainCarts</label>
-        <label class="option-item" for="route-by-warp"><input type="checkbox" id="route-by-warp" /> Warp</label>
-        <label class="option-item" for="route-by-vehicles"><input type="checkbox" id="route-by-vehicles" /> Vehicles</label>
-        <label class="option-item" for="route-by-cart"><input type="checkbox" id="route-by-cart" /> Cart</label>
-      </div>
-    </fieldset>
-
-    <fieldset class="option-group">
-      <legend>Speed calculations</legend>
-      <div class="option-list">
-        <label class="option-item" for="prox-walk"><input type="radio" id="prox-walk" name="prox" /> Walking/Running</label>
-        <label class="option-item" for="prox-walk10"><input type="radio" id="prox-walk10" name="prox" /> Walking/Running (speed 10)</label>
-        <label class="option-item" for="prox-fly"><input type="radio" id="prox-fly" name="prox" /> Flying</label>
-        <label class="option-item" for="prox-fly10"><input type="radio" id="prox-fly10" name="prox" /> Flying (speed 10)</label>
-      </div>
-    </fieldset>
-    <br/>
-        <p style="text-align:center;">
-        <button id ="go" class="accent" style="--accent: #10aa62; --accent-hover: #0d834c; --accent-text: #ffffff;">GO</button>
-        </p>
-      
+    <header>
+      <h1>slowroute ux</h1>
+      <caption>
+        a routing service for the Minecart Rapid Transit server, with better UI.
+      </caption>
+    </header>
+    <main>
       <fieldset>
-        <legend>Route</legend>
-           <div id="out"></div>
+        <div class="dropdown-container">
+          <label for="from">From</label>
+          <select id="from"></select>
+          <button id="from-random">Random</button>
+        </div>
+      </fieldset>
+      <br />
+
+      <fieldset>
+        <div class="dropdown-container">
+          <label for="to">To</label>
+          <select id="to"></select>
+          <button id="to-random">Random</button>
+          <div class="dropdown-container"></div>
+        </div>
+      </fieldset>
+      <br />
+
+      <fieldset class="option-group">
+        <legend>Transport modes</legend>
+        <div class="option-list">
+          <label class="option-item" for="route-by-air"
+            ><input type="checkbox" id="route-by-air" /> Air</label
+          >
+          <label class="option-tem" for="route-by-bus"
+            ><input type="checkbox" id="route-by-bus" /> Bus</label
+          >
+          <label class="option-item" for="route-by-rail"
+            ><input type="checkbox" id="route-by-rail" /> Rail</label
+          >
+          <label class="option-item" for="route-by-sea"
+            ><input type="checkbox" id="route-by-sea" /> Sea</label
+          >
+          <label class="option-item" for="route-by-spawn-warp"
+            ><input type="checkbox" id="route-by-spawn-warp" /> Spawn
+            Warp</label
+          >
+          <label class="option-item" for="route-by-traincarts"
+            ><input type="checkbox" id="route-by-traincarts" />
+            TrainCarts</label
+          >
+          <label class="option-item" for="route-by-warp"
+            ><input type="checkbox" id="route-by-warp" /> Warp</label
+          >
+          <label class="option-item" for="route-by-vehicles"
+            ><input type="checkbox" id="route-by-vehicles" /> Vehicles</label
+          >
+          <label class="option-item" for="route-by-cart"
+            ><input type="checkbox" id="route-by-cart" /> Cart</label
+          >
+        </div>
       </fieldset>
 
-    <footer><p style="text-align:center;">Open source | Thanks to Kev Quirk for <a href="https://simplecss.org">simple.css.</a> | <a href="https://github.com/sushicat75/slowrouteux">This project's repo</a> | Based off <a href="https://mrt-map.github.io/slowroute">slowroute.</a></p>
+      <fieldset class="option-group">
+        <legend>Speed calculations</legend>
+        <div class="option-list">
+          <label class="option-item" for="prox-walk"
+            ><input type="radio" id="prox-walk" name="prox" />
+            Walking/Running</label
+          >
+          <label class="option-item" for="prox-walk10"
+            ><input type="radio" id="prox-walk10" name="prox" /> Walking/Running
+            (speed 10)</label
+          >
+          <label class="option-item" for="prox-fly"
+            ><input type="radio" id="prox-fly" name="prox" /> Flying</label
+          >
+          <label class="option-item" for="prox-fly10"
+            ><input type="radio" id="prox-fly10" name="prox" /> Flying (speed
+            10)</label
+          >
+        </div>
+      </fieldset>
+      <br />
+      <p style="text-align: center">
+        <button
+          id="go"
+          class="accent"
+          style="
+            --accent: #10aa62;
+            --accent-hover: #0d834c;
+            --accent-text: #ffffff;
+          "
+        >
+          GO
+        </button>
+      </p>
+
+      <fieldset>
+        <legend>Route</legend>
+        <div id="out"></div>
+      </fieldset>
+    </main>
+    <footer>
+      <p style="text-align: center">
+        Open source | Thanks to Kev Quirk for
+        <a href="https://simplecss.org">simple.css.</a> |
+        <a href="https://github.com/sushicat75/slowrouteux"
+          >This project's repo</a
+        >
+        | Based off <a href="https://mrt-map.github.io/slowroute">slowroute.</a>
+      </p>
     </footer>
   </body>
-  </main> 
 </html>
