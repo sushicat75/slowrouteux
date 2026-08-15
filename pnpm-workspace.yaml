@@ -1,3 +1,7 @@
 onlyBuiltDependencies:
   - esbuild
   - gatelogue-types
+allowBuilds:
+  better-sqlite3: true
+minimumReleaseAgeExclude:
+  - gatelogue-types@3.1.4
