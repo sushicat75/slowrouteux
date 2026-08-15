@@ -8,18 +8,18 @@ importers:
 
   .:
     dependencies:
+      '@sqlite.org/sqlite-wasm':
+        specifier: 3.53.0-build1
+        version: 3.53.0-build1
       gatelogue-types:
-        specifier: 3.1.2
-        version: 3.1.2
+        specifier: 3.1.4
+        version: 3.1.4
       jquery:
         specifier: 4.0.0
         version: 4.0.0
       select2:
         specifier: 4.1.0
         version: 4.1.0
-      sql.js:
-        specifier: 1.14.1
-        version: 1.14.1
     devDependencies:
       '@types/jquery':
         specifier: 4.0.1
@@ -27,9 +27,6 @@ importers:
       '@types/select2':
         specifier: 4.0.63
         version: 4.0.63
-      '@types/sql.js':
-        specifier: 1.4.11
-        version: 1.4.11
       prettier:
         specifier: 3.9.6
         version: 3.9.6
@@ -138,8 +135,9 @@ packages:
   '@rolldown/pluginutils@1.0.1':
     resolution: {integrity: sha512-2j9bGt5Jh8hj+vPtgzPtl72j0yRxHAyumoo6TNfAjsLB04UtpSvPbPcDcBMxz7n+9CYB0c1GxQFxYRg2jimqGw==}
 
-  '@types/emscripten@1.41.5':
-    resolution: {integrity: sha512-cMQm7pxu6BxtHyqJ7mQZ2kXWV5SLmugybFdHCBbJ5eHzOo6VhBckEgAT3//rP5FwPHNPeEiq4SmQ5ucBwsOo4Q==}
+  '@sqlite.org/sqlite-wasm@3.53.0-build1':
+    resolution: {integrity: sha512-PfWPWN2n+/37doa8oh2/oUXk4OOsRYZsxc1W1sDXIGb/Pu5Yrb+f2eyYpgQMGITVX7HVgxhs9P18Rc6I97ym/g==}
+    engines: {node: '>=22'}
 
   '@types/jquery@4.0.1':
     resolution: {integrity: sha512-9a59A/tycXgYuPABcp6/3spSShn0NT2UOM4EfHvMumjYi4lJWTsK5SZWjhx3yRm9IHGCeWXdV2YfNsrWrft/CA==}
@@ -149,9 +147,6 @@ packages:
 
   '@types/select2@4.0.63':
     resolution: {integrity: sha512-/DXUfPSj3iVTGlRYRYPCFKKSogAGP/j+Z0fIMXbBiBtmmZj0WH7vnfNuckafq9C43KnqPPQW2TI/Rj/vTSGnQQ==}
-
-  '@types/sql.js@1.4.11':
-    resolution: {integrity: sha512-QXIx38p2ZThJaK9vP5ZdqdlRe1FG9I8SmCZOS7FHfB/2qPAjZwkL7/vlfPg6N/oWHuuOaGg/P/IRwfP2W0kWVQ==}
 
   '@typescript/typescript-aix-ppc64@7.0.2':
     resolution: {integrity: sha512-MTKKkWB7p/0E9xi1d1tHtZ5PiLkGEMIq88pK2CubZjOsLtYTLqhgIgi6zepFa+9GHZ6h05NMCkQxGKiPXMxXtQ==}
@@ -273,6 +268,10 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  better-sqlite3@13.0.3:
+    resolution: {integrity: sha512-RbOBxmLBG8uvFUc15X9+9SFemKcQ0WBuISBVkpuiaUB2qblC8UWlHEjdWVoZ8AdhSwmoEgsiXKfopX0CQxaACQ==}
+    engines: {node: '>=22'}
+
   detect-libc@2.1.2:
     resolution: {integrity: sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==}
     engines: {node: '>=8'}
@@ -291,8 +290,8 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
 
-  gatelogue-types@3.1.2:
-    resolution: {integrity: sha512-9e9xMW0OfEYSn14nD8gzLXkysOXl/IQ7R941q/ih0Z1ag6Xi1E40n90GeYnx66OLxjl2gwIDBKLqH8+/7gBs7Q==}
+  gatelogue-types@3.1.4:
+    resolution: {integrity: sha512-0w6n23PJHA3a0vVv0XFeNOsQLzammYimTp1P+2wyfJryIIopOeH2LGLc8Pl2Tq/hXuBEXHgWfqs/3kL/8aUirg==}
 
   jquery@4.0.0:
     resolution: {integrity: sha512-TXCHVR3Lb6TZdtw1l3RTLf8RBWVGexdxL6AC8/e0xZKEpBflBsjh9/8LXw+dkNFuOyW9B7iB3O1sP7hS0Kiacg==}
@@ -376,6 +375,10 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
+  node-addon-api@8.9.2:
+    resolution: {integrity: sha512-VijLXbi3UACN69I0JVXJsX4tjACjNoQDgv2gTF6sx2wWEi8tkSg2eX8p5gSIFi8z2+DL3oHmY6OyKce38SDolg==}
+    engines: {node: ^18 || ^20 || >= 21}
+
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
@@ -404,9 +407,6 @@ packages:
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
-
-  sql.js@1.14.1:
-    resolution: {integrity: sha512-gcj8zBWU5cFsi9WUP+4bFNXAyF1iRpA3LLyS/DP5xlrNzGmPIizUeBggKa8DbDwdqaKwUcTEnChtd2grWo/x/A==}
 
   tinyglobby@0.2.17:
     resolution: {integrity: sha512-wXR/dYpcqKmfWpEdZjiKJOwCNFndD0DMnrW/cYjVGttEkBfVgcLFHoNrlj47mjOVic9yyNu65alsgF4NQyTa2g==}
@@ -511,22 +511,18 @@ snapshots:
 
   '@rolldown/pluginutils@1.0.1': {}
 
-  '@types/emscripten@1.41.5': {}
+  '@sqlite.org/sqlite-wasm@3.53.0-build1': {}
 
   '@types/jquery@4.0.1': {}
 
   '@types/node@26.2.0':
     dependencies:
       undici-types: 8.3.0
+    optional: true
 
   '@types/select2@4.0.63':
     dependencies:
       '@types/jquery': 4.0.1
-
-  '@types/sql.js@1.4.11':
-    dependencies:
-      '@types/emscripten': 1.41.5
-      '@types/node': 26.2.0
 
   '@typescript/typescript-aix-ppc64@7.0.2':
     optional: true
@@ -588,6 +584,11 @@ snapshots:
   '@typescript/typescript-win32-x64@7.0.2':
     optional: true
 
+  better-sqlite3@13.0.3:
+    dependencies:
+      node-addon-api: 8.9.2
+    optional: true
+
   detect-libc@2.1.2: {}
 
   fdir@6.5.0(picomatch@4.0.5):
@@ -597,9 +598,10 @@ snapshots:
   fsevents@2.3.3:
     optional: true
 
-  gatelogue-types@3.1.2:
-    dependencies:
-      sql.js: 1.14.1
+  gatelogue-types@3.1.4:
+    optionalDependencies:
+      '@sqlite.org/sqlite-wasm': 3.53.0-build1
+      better-sqlite3: 13.0.3
 
   jquery@4.0.0: {}
 
@@ -654,6 +656,9 @@ snapshots:
 
   nanoid@3.3.18: {}
 
+  node-addon-api@8.9.2:
+    optional: true
+
   picocolors@1.1.1: {}
 
   picomatch@4.0.5: {}
@@ -690,8 +695,6 @@ snapshots:
 
   source-map-js@1.2.1: {}
 
-  sql.js@1.14.1: {}
-
   tinyglobby@0.2.17:
     dependencies:
       fdir: 6.5.0(picomatch@4.0.5)
@@ -720,7 +723,8 @@ snapshots:
       '@typescript/typescript-win32-arm64': 7.0.2
       '@typescript/typescript-win32-x64': 7.0.2
 
-  undici-types@8.3.0: {}
+  undici-types@8.3.0:
+    optional: true
 
   vite@8.2.1(@types/node@26.2.0):
     dependencies:

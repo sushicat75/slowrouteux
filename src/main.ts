@@ -3,7 +3,7 @@ import {
   AirGate,
   BusBerth,
   BusStop,
-  GD,
+  BrowserGD,
   Node,
   LocatedNode,
   RailPlatform,
@@ -25,8 +25,7 @@ import {
 import $ from "jquery";
 import select2 from "select2";
 import "select2/dist/css/select2.css";
-import initSqlJs from "sql.js";
-import wasmUrl from "sql.js/dist/sql-wasm-browser.wasm?url";
+import sqlite3InitModule from "@sqlite.org/sqlite-wasm";
 // @ts-expect-error
 select2($);
 
@@ -39,9 +38,9 @@ const htmlFromRandom = document.getElementById(
 )! as HTMLButtonElement;
 const htmlToRandom = document.getElementById("to-random")! as HTMLButtonElement;
 
-const SQL = await initSqlJs({ locateFile: () => wasmUrl });
-const gd = await GD.get(false, SQL);
-gd.db.run(`
+const sqlite3 = await sqlite3InitModule();
+const gd = await BrowserGD.get(sqlite3);
+gd.db.exec(`
   CREATE INDEX NodeTypeIndex ON Node(type);
   CREATE INDEX ProximityNode1Index ON Proximity(node1);
   CREATE INDEX ProximityNode2Index ON Proximity(node2);

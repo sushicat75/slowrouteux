@@ -12,15 +12,14 @@
   "devDependencies": {
     "@types/jquery": "4.0.1",
     "@types/select2": "4.0.63",
-    "@types/sql.js": "1.4.11",
     "prettier": "3.9.6",
     "typescript": "7.0.2",
     "vite": "8.2.1"
   },
   "dependencies": {
-    "gatelogue-types": "3.1.2",
+    "gatelogue-types": "3.1.4",
     "jquery": "4.0.0",
     "select2": "4.1.0",
-    "sql.js": "1.14.1"
+    "@sqlite.org/sqlite-wasm": "3.53.0-build1"
   }
 }
