@@ -1,4 +1,4 @@
-name: Bug report
+name: Bug report (unknown area)
 description: say here whats the problem and try to be clear as possible. this is for all bugs if you dont know where they are happening.
 labels: ["Triage", "bug-unknown"]
 body:
