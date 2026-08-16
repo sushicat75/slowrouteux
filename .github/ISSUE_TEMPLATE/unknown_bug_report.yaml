@@ -1,0 +1,23 @@
+name: Bug report
+description: say here whats the problem and try to be clear as possible. this is for all bugs if you dont know where they are happening.
+labels: ["Triage", "bug-unknown"]
+body:
+  - type: textarea
+    id: desc
+    attributes:
+      label: bug info
+      description: what happened
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: expected behavior
+      description: what should have happened
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: other stuff
+      description: anything else

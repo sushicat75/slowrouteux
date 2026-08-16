@@ -1,0 +1,23 @@
+name: frontend bug report
+description: this form is for bugs in the frontend (ui, buttons, etc)
+labels: ["Triage", "bug-frontend"]
+body:
+  - type: textarea
+    id: desc
+    attributes:
+      label: bug info
+      description: what happened
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: expected behavior
+      description: what should have happened
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: other stuff
+      description: anything else
