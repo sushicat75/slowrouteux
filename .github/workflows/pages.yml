@@ -3,6 +3,12 @@ name: Deploy to Pages
 on:
   push:
     branches: ["main"]
+    paths:
+      - "src/**"
+      - "index.html"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - ".github/workflows/pages.yml"
   workflow_dispatch:
 
 # REQUIRED: Grants permissions to deploy natively via GitHub Actions
@@ -44,7 +50,7 @@ jobs:
       - name: Upload Build Artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: "./dist"
 
   deploy:
     needs: build
