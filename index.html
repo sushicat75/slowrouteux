@@ -19,7 +19,16 @@
       <p>
         a routing service for the Minecart Rapid Transit server, with better UI.
       </p>
-    </header>
+      <div id="js-loading-banner" style="text-align: center; margin: 10px 0;">
+  <mark>Loading routing functions...</mark>
+</div>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('js-loading-banner')?.remove();
+  });
+</script>
+
     <main>
       <fieldset>
         <legend>From</legend>
