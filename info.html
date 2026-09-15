@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://unpkg.com/simpledotcss/simple.css" />
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+    <style>
+      fieldset {
+        min-width: 0;
+        width: 100%;
+      }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="./src/main.ts"></script>
+    <title>info-slowroute ux</title>
+  </head>
+  <body>
+    <header>
+      <h1>slowroute ux-info</h1>
+      <p>
+        information about the project, where the data comes from, and why its
+        might be so slow.
+      </p>
+    </header>
+    <main>
+      <fieldset>
+        <legend>General info</legend>
+        Slowroute ux is a redesign of the routing service slowroute.
+      </fieldset>
+      <fieldset>
+        <legend>What is it for?</legend>
+        It's for the
+        <a href="https://minecartrapidtransit.net">Minecart Rapid Transit</a>
+        server, a minecraft server with a lot of transit.
+      </fieldset>
+      <fieldset>
+        <legend>Open source!</legend>
+        This project is open source under the GPL 3.0! That means you can
+        contribute to it and fork it as long as you keep the same license.
+      </fieldset>
+      <fieldset>
+        <legend>where is the data from/why is it not up to date</legend>
+        The data for the routing service is from
+        <a href="https://github.com/MRT-Map/gatelogue">gatelogue</a>, a database
+        of transit services. You can go there to help update it.
+      </fieldset>
+      <fieldset>
+        <legend>source code/contributing/bug report</legend>
+        The source code is on GitHub
+        <a href="https://github.com/sushicat75/slowrouteux">here</a>.
+      </fieldset>
+      <fieldset>
+        <legend>why is it taking forever to load?</legend>
+        It all has to run on your device and there are a lot of stations and
+        routes so it tries to find the best one.
+      </fieldset>
+    </main>
+    <footer>
+      <p style="text-align: center">
+        <a href="index.html">back to main</a>
+      </p>
+    </footer>
+  </body>
+</html>
