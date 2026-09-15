@@ -1,0 +1,50 @@
+name: Upstream Sync
+
+on:
+  schedule:
+    - cron: "0 0 */3 * *" # Every 3 days at midnight UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      should_sync: ${{ steps.compare.outputs.should_sync }}
+
+    steps:
+      - name: Check commits behind upstream
+        id: compare
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FORK: ${{ github.repository }}
+        run: |
+          UPSTREAM="MRT-Map/slowroute"
+
+          BEHIND=$(gh api \
+            "repos/$FORK/compare/main...$UPSTREAM:main" \
+            --jq '.behind_by')
+
+          echo "Fork is $BEHIND commits behind upstream"
+
+          if [ "$BEHIND" -ge 5 ]; then
+            echo "should_sync=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "should_sync=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  sync:
+    needs: check
+    if: needs.check.outputs.should_sync == 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Upstream Sync
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.3
+        with:
+          target_sync_branch: main
+          target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+          upstream_sync_repo: MRT-Map/slowroute
+          upstream_sync_branch: main
