@@ -48,7 +48,7 @@ jobs:
         run: echo "" > ./dist/.nojekyll
 
       - name: Upload Build Artifacts
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: "./dist"
 
