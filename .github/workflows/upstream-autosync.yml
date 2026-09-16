@@ -15,17 +15,19 @@ jobs:
       should_sync: ${{ steps.compare.outputs.should_sync }}
 
     steps:
+      - name: Check out fork
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
       - name: Check commits behind upstream
         id: compare
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          FORK: ${{ github.repository }}
         run: |
-          UPSTREAM="MRT-Map/slowroute"
+          git remote add upstream https://github.com/MRT-Map/slowroute.git
+          git fetch upstream main
 
-          BEHIND=$(gh api \
-            "repos/$FORK/compare/main...$UPSTREAM:main" \
-            --jq '.behind_by')
+          BEHIND=$(git rev-list --count HEAD..upstream/main)
 
           echo "Fork is $BEHIND commits behind upstream"
 
