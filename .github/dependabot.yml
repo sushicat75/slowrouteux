@@ -5,6 +5,7 @@ updates:
     directory: /.github/workflows/sync/
     schedule:
       interval: weekly
-  - dependency-names: actions/Fork-Sync-With-Upstream-action
-  # it only does upstream sync the actual sync action
-  # upstream sync's checkout must be done manually
+    allow:
+      - dependency-name: actions/Fork-Sync-With-Upstream-action
+        # only does upstream sync's actual sync action
+        # upstream sync checkout action must be updated manually
