@@ -43,6 +43,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check out fork
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          ref: main
+
       - name: Upstream Sync
         uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.3
         with:
