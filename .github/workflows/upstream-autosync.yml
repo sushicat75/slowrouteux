@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Check out fork
-        uses: actions/checkout@v7
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           ref: main
@@ -25,7 +25,7 @@ jobs:
       - name: Check commits behind upstream
         id: compare
         run: |
-          git remote add upstream https://github.com/MRT-Map/slowroute.git
+          git remote add upstream https://github.com/MRT-Map/slowroute.git || true
           git fetch upstream main
 
           BEHIND=$(git rev-list --count HEAD..upstream/main)
@@ -44,16 +44,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out fork
-        uses: actions/checkout@v7
+      - name: Check out fork (with credentials)
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           ref: main
+          persist-credentials: true
 
-      - name: Upstream Sync
+      - name: Sync upstream changes
+        id: sync
         uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.3
         with:
           target_sync_branch: main
-          target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+          # Uses your PAT stored as an Actions secret:
+          target_repo_token: ${{ secrets.UPSTREAM_AUTOSYNC_TOKEN }}
           upstream_sync_repo: MRT-Map/slowroute
           upstream_sync_branch: main
