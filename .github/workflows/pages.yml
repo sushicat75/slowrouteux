@@ -22,7 +22,7 @@ jobs:
           git config --global url."https://github.com/".insteadOf git@github.com:
           git config --global url."https://".insteadOf git://
       - run: pnpm install --no-frozen-lockfile
-      - run: pnpm build --base=slowroute
+      - run: pnpm build --base=/slowrouteux/
       - run: cd dist; echo > .nojekyll; cd ..
       - name: Deploy
         uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4.1.0
