@@ -49,7 +49,7 @@ jobs:
         with:
           fetch-depth: 0
           ref: main
-          persist-credentials: false
+          persist-credentials: true
 
       - name: Check sync token is present
         env:

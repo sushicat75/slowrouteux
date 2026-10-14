@@ -12,7 +12,7 @@
   "devDependencies": {
     "@types/jquery": "4.0.1",
     "@types/select2": "4.0.63",
-    "prettier": "3.9.9",
+    "prettier": "3.9.10",
     "typescript": "7.0.2",
     "vite": "8.3.4"
   },
