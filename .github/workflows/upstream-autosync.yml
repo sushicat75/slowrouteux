@@ -50,13 +50,12 @@ jobs:
           fetch-depth: 0
           ref: main
           persist-credentials: true
-
+          
       - name: Sync upstream changes
-        id: sync
         uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.3
         with:
           target_sync_branch: main
-          # Uses your PAT stored as an Actions secret:
           target_repo_token: ${{ secrets.UPSTREAM_AUTOSYNC_TOKEN }}
-          upstream_sync_repo: MRT-Map/slowroute
           upstream_sync_branch: main
+          upstream_sync_repo: MRT-Map/slowroute
+          upstream_repo_access_token: ${{ secrets.UPSTREAM_AUTOSYNC_TOKEN }}
