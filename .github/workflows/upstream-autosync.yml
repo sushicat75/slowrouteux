@@ -50,6 +50,17 @@ jobs:
           fetch-depth: 0
           ref: main
           persist-credentials: true
+
+      - name: Check sync token is present
+        env:
+          SYNC_TOKEN: ${{ secrets.UPSTREAM_AUTOSYNC_TOKEN }}
+        run: |
+          if [ -n "$SYNC_TOKEN" ]; then
+            echo "Sync token is present"
+          else
+            echo "Sync token is missing"
+            exit 1
+          fi
           
       - name: Sync upstream changes
         uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.3
