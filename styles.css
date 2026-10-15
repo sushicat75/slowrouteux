@@ -1,0 +1,20 @@
+fieldset {
+  min-width: 0;
+  width: 100%;
+}
+.title-box {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  margin: 20px auto 0; /* Pushes the ENTIRE row (image + text) down from the top */
+}
+
+.title-box h1 {
+  margin: 0 0 0 10px; /* Keeps text tight next to the image with no individual top push */
+  display: inline;
+}
+
+.title-box img {
+  width: 50px;
+  height: auto;
+}
