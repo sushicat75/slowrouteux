@@ -27,17 +27,13 @@ jobs:
         run: |
           git remote add upstream https://github.com/MRT-Map/slowroute.git || true
           git fetch upstream main
-
           BEHIND=$(git rev-list --count HEAD..upstream/main)
-
           echo "Fork is $BEHIND commits behind upstream"
-
           if [ "$BEHIND" -ge 1 ]; then
             echo "should_sync=true" >> "$GITHUB_OUTPUT"
           else
             echo "should_sync=false" >> "$GITHUB_OUTPUT"
           fi
-
   sync:
     needs: check
     if: needs.check.outputs.should_sync == 'true'
@@ -49,7 +45,7 @@ jobs:
         with:
           fetch-depth: 0
           ref: main
-          persist-credentials: true
+          persist-credentials: false
 
       - name: Check sync token is present
         env:
@@ -63,7 +59,7 @@ jobs:
           fi
           
       - name: Sync upstream changes
-        uses: aormsby/Fork-Sync-With-Upstream-action@83d78e8c4bf524e79b091cf257deba4dee9e60df #v3.4.3
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.3
         with:
           target_sync_branch: main
           target_repo_token: ${{ secrets.UPSTREAM_AUTOSYNC_TOKEN }}
