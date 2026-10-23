@@ -12,8 +12,8 @@ importers:
         specifier: 3.53.0-build1
         version: 3.53.0-build1
       gatelogue-types:
-        specifier: 3.1.4
-        version: 3.1.4
+        specifier: 3.1.5
+        version: 3.1.5(@sqlite.org/sqlite-wasm@3.53.0-build1)(better-sqlite3@13.0.3)
       jquery:
         specifier: 4.0.0
         version: 4.0.0
@@ -293,8 +293,16 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
 
-  gatelogue-types@3.1.4:
-    resolution: {integrity: sha512-0w6n23PJHA3a0vVv0XFeNOsQLzammYimTp1P+2wyfJryIIopOeH2LGLc8Pl2Tq/hXuBEXHgWfqs/3kL/8aUirg==}
+  gatelogue-types@3.1.5:
+    resolution: {integrity: sha512-xSNioHAkXyIbEOKWciHk8sNGVlO4V4FKf9KrPz/xAMrDEWXn0a1jpMBTNzYmOY2XQDcl+hazjCi9eCKJGMzi1Q==}
+    peerDependencies:
+      '@sqlite.org/sqlite-wasm': 3.53.0-build1
+      better-sqlite3: 13.x
+    peerDependenciesMeta:
+      '@sqlite.org/sqlite-wasm':
+        optional: true
+      better-sqlite3:
+        optional: true
 
   jquery@4.0.0:
     resolution: {integrity: sha512-TXCHVR3Lb6TZdtw1l3RTLf8RBWVGexdxL6AC8/e0xZKEpBflBsjh9/8LXw+dkNFuOyW9B7iB3O1sP7hS0Kiacg==}
@@ -596,7 +604,7 @@ snapshots:
   fsevents@2.3.3:
     optional: true
 
-  gatelogue-types@3.1.4:
+  gatelogue-types@3.1.5(@sqlite.org/sqlite-wasm@3.53.0-build1)(better-sqlite3@13.0.3):
     optionalDependencies:
       '@sqlite.org/sqlite-wasm': 3.53.0-build1
       better-sqlite3: 13.0.3

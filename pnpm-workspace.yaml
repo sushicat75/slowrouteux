@@ -7,4 +7,4 @@ onlyBuiltDependencies:
 allowBuilds:
   better-sqlite3: true
 minimumReleaseAgeExclude:
-  - gatelogue-types@3.1.4
+  - gatelogue-types
