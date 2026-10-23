@@ -59,7 +59,7 @@ jobs:
           fi
           
       - name: Sync upstream changes
-        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.3
+        uses: aormsby/Fork-Sync-With-Upstream-action@83d78e8c4bf524e79b091cf257deba4dee9e60df
         with:
           target_sync_branch: main
           target_repo_token: ${{ secrets.UPSTREAM_AUTOSYNC_TOKEN }}
