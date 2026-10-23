@@ -225,7 +225,7 @@ function dijkstra(from: LocatedNodes, to: LocatedNodes): string[] {
     for (const sw of gd.spawnWarps) {
       cameFrom.set(sw.i, {
         from: from.i,
-        text: () => `Board the spawn warp to ${sw.name}`,
+        text: () => `Use spawn warp ${sw.name}`,
       });
       costs.set(sw.i, CONFIG.CHANGING_COST);
       q.push(sw.i);
@@ -246,10 +246,10 @@ function dijkstra(from: LocatedNodes, to: LocatedNodes): string[] {
         fi = f;
         if (text) output.push(text());
       }
-      output.push(`Will Board the ~${Math.round(cost)} seconds`);
-      if (!to.coordinates) output.push("WARNING: End has unknown coordinates");
+      output.push(`Estimated time: ~${Math.round(cost)} seconds`);
+      if (!to.coordinates) output.push("WARNING! The destination has unknown coordinates!");
       if (!from.coordinates)
-        output.push("WARNING : Start has unknown coordinates");
+        output.push("WARNING! The origin has unknown coordinates!");
       return output.reverse();
     }
 
