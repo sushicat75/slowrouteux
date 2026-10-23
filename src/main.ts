@@ -225,7 +225,7 @@ function dijkstra(from: LocatedNodes, to: LocatedNodes): string[] {
     for (const sw of gd.spawnWarps) {
       cameFrom.set(sw.i, {
         from: from.i,
-        text: () => `Take spawn warp to ${sw.name}`,
+        text: () => `Use spawn warp ${sw.name}`,
       });
       costs.set(sw.i, CONFIG.CHANGING_COST);
       q.push(sw.i);
@@ -246,10 +246,10 @@ function dijkstra(from: LocatedNodes, to: LocatedNodes): string[] {
         fi = f;
         if (text) output.push(text());
       }
-      output.push(`Will take ~${Math.round(cost)} seconds`);
-      if (!to.coordinates) output.push("WARNING: End has unknown coordinates");
+      output.push(`Estimated time: ~${Math.round(cost)} seconds`);
+      if (!to.coordinates) output.push("WARNING! The destination has unknown coordinates!");
       if (!from.coordinates)
-        output.push("WARNING : Start has unknown coordinates");
+        output.push("WARNING! The origin has unknown coordinates!");
       return output.reverse();
     }
 
@@ -268,7 +268,7 @@ function dijkstra(from: LocatedNodes, to: LocatedNodes): string[] {
           i: proxI,
           cost: cost + distance / CONFIG.FLYING_MPS + CONFIG.CHANGING_COST,
           text: () =>
-            `Fly ${Math.round(distance)} blocks to ${proxType} ${displayNode(proxI)}`,
+            `Fly ~${Math.round(distance)} blocks to ${proxType} ${displayNode(proxI)}`,
         });
       }
       for (const nodeSF of node.sharedFacilities) {
@@ -277,7 +277,7 @@ function dijkstra(from: LocatedNodes, to: LocatedNodes): string[] {
           cost: cost + CONFIG.CHANGING_COST,
           text: () =>
             // @ts-expect-error
-            `Change to ${nodeSF.type} ${nodeSF.company.name} ${displayNode(nodeSF)}`,
+            `Transfer to the ${nodeSF.type} ${nodeSF.company.name} ${displayNode(nodeSF)}`,
         });
       }
     }
@@ -363,7 +363,7 @@ function dijkstra(from: LocatedNodes, to: LocatedNodes): string[] {
         neighbours.push({
           i: berthI,
           cost: cost + CONFIG.CHANGING_COST,
-          text: berthCode ? () => `Go to berth ${berthCode}` : undefined,
+          text: berthCode ? () => `Go to bus stop ${berthCode}` : undefined,
         });
       }
     } else if (node instanceof BusBerth) {
@@ -378,7 +378,7 @@ function dijkstra(from: LocatedNodes, to: LocatedNodes): string[] {
         neighbours.push({
           i: berthI,
           cost: cost + CONFIG.CHANGING_COST,
-          text: berthCode ? () => `Go to berth ${berthCode}` : undefined,
+          text: berthCode ? () => `Go to bus stop ${berthCode}` : undefined,
         });
       }
       if (CONFIG.ROUTE_BY.has("bus")) {
@@ -420,7 +420,7 @@ function dijkstra(from: LocatedNodes, to: LocatedNodes): string[] {
                   CONFIG.TRAINCART_MPS
                   : CONFIG.WARP_COST)),
             text: () =>
-              `Take ${company.name} ${displayNode(lineI)} ${label}to ${displayNode(toStop)}`,
+              `Board the ${company.name} ${displayNode(lineI)} ${label}to ${displayNode(toStop)}`,
           });
         }
       }
@@ -493,7 +493,7 @@ function dijkstra(from: LocatedNodes, to: LocatedNodes): string[] {
                   CONFIG.TRAINCART_MPS
                   : CONFIG.WARP_COST)),
             text: () =>
-              `Take ${company.name} ${displayNode(lineI)} ${label}to ${displayNode(toStop)}`,
+              `Board the ${company.name} ${displayNode(lineI)} ${label}to ${displayNode(toStop)}`,
           });
         }
       }
@@ -584,7 +584,7 @@ function dijkstra(from: LocatedNodes, to: LocatedNodes): string[] {
                     CONFIG.CART_MPS
                     : CONFIG.WARP_COST)),
             text: () =>
-              `Take ${company.name} ${displayNode(lineI)} ${label}to ${displayNode(toStation)}`,
+              `Board the ${company.name} ${displayNode(lineI)} ${label}to ${displayNode(toStation)}`,
           });
         }
       }
@@ -600,7 +600,7 @@ function dijkstra(from: LocatedNodes, to: LocatedNodes): string[] {
     }
   }
 
-  return ["No route"];
+  return ["No route found!"];
 }
 
 htmlGo.addEventListener("click", () => {
@@ -608,7 +608,7 @@ htmlGo.addEventListener("click", () => {
   const from = gd.getNode(parseInt(htmlFrom.value))! as LocatedNodes;
   const to = gd.getNode(parseInt(htmlTo.value))! as LocatedNodes;
   if (from.i === to.i) {
-    htmlOut.innerHTML = "Already there";
+    htmlOut.innerHTML = "You're already there!";
     return;
   }
 
@@ -625,7 +625,7 @@ htmlGo.addEventListener("click", () => {
       )
       .join("<br>");
   } catch (e) {
-    htmlOut.innerHTML = `Potential OOM. Try refreshing this page<br>${e}`;
+    htmlOut.innerHTML = `Uh oh! Potential OOM error so please try refreshing the page.<br>${e}`;
     throw e;
   } finally {
     console.timeEnd("dijkstra");
