@@ -6,6 +6,6 @@ updates:
     schedule:
       interval: weekly
     allow:
-      - dependency-name: actions/Fork-Sync-With-Upstream-action
+      - dependency-name: aormsby/Fork-Sync-With-Upstream-action
         # only does upstream sync's actual sync action
         # upstream sync checkout action must be updated manually
