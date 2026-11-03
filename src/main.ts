@@ -113,12 +113,16 @@ function setupDropdown() {
 
     options.push([node.i, `${node.type} ${option}`]);
   }
-  const optionsString = options
-    .sort(([_, a], [__, b]) => a.localeCompare(b))
-    .map(([i, o]) => `<option value="${i}">${o}</option>`)
-    .join();
-  htmlFrom.innerHTML = optionsString;
-  htmlTo.innerHTML = optionsString;
+  const sortedOptions = options.sort(([_, a], [__, b]) => a.localeCompare(b));
+  for (const select of [htmlFrom, htmlTo]) {
+    select.replaceChildren();
+    for (const [i, label] of sortedOptions) {
+      const option = document.createElement("option");
+      option.value = String(i);
+      option.textContent = label;
+      select.append(option);
+    }
+  }
 }
 setupDropdown();
 
@@ -543,8 +547,8 @@ function dijkstra(from: LocatedNodes, to: LocatedNodes): string[] {
         >(
           `SELECT C.direction, C.duration, B.i, L.i, L.mode, L.local, B.station, L.company
                FROM RailConnection C
-                LEFT JOIN RailLine L ON C.line = L.i
-                LEFT JOIN RailPlatform B ON C."to" = B.i
+               LEFT JOIN RailLine L ON C.line = L.i
+               LEFT JOIN RailPlatform B ON C."to" = B.i
                WHERE C."from" = $1`,
           [node.i],
         );
