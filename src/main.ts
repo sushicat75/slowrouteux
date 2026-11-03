@@ -25,6 +25,7 @@ import {
 import $ from "jquery";
 import select2 from "select2";
 import "select2/dist/css/select2.css";
+import "simpledotcss/simple.css";
 import sqlite3InitModule from "@sqlite.org/sqlite-wasm";
 // @ts-expect-error
 select2($);
