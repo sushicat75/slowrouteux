@@ -1,4 +1,4 @@
-# slowroute
+# slowrouteux
 
 [![Sync from upstream](https://github.com/sushicat75/slowrouteux/actions/workflows/upstream-autosync.yml/badge.svg)](https://github.com/sushicat75/slowrouteux/actions/workflows/upstream-autosync.yml)
 [![Build and deployment](https://github.com/sushicat75/slowrouteux/actions/workflows/pages.yml/badge.svg)](https://github.com/sushicat75/slowrouteux/actions/workflows/pages.yml)
