@@ -5,6 +5,7 @@ on:
     workflows: ["CodeQL Advanced"] 
     types:
       - completed
+    branches: [main]
 
 permissions:
   contents: write
