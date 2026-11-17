@@ -1,19 +1,20 @@
 name: Build and send to gh-pages branch
 
 on:
-  workflow_run:
-    workflows: ["CodeQL Advanced"] 
-    types:
-      - completed
-    branches: [main]
-
+  push:
+    branches: ["main"]
+    paths-ignore:
+      - ".github/**"
+      - "*.md"
+      - "LICENSE"
+      - ".gitignore"
+      - ".prettierignore"
 permissions:
   contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
