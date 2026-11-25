@@ -20,6 +20,9 @@ importers:
       select2:
         specifier: 4.1.1
         version: 4.1.1
+      simpledotcss:
+        specifier: 2.3.7
+        version: 2.3.7
     devDependencies:
       '@types/jquery':
         specifier: 4.0.1
@@ -430,6 +433,9 @@ packages:
   select2@4.1.1:
     resolution: {integrity: sha512-kufep72db0ibLV8V/BI7uLT4vb1LPn29tYFtH2Y0TIqgimYwbj9NBw5nzTa9j1spBoABio6MlVcupxfWvoGMPA==}
 
+  simpledotcss@2.3.7:
+    resolution: {integrity: sha512-Ag3TpigN7725AnvgwyGkErd50SuYmlDQRU+9LLNHUIK8T4DUEWPHut6GpD1ivxARrBd8eYGTL8vzKazVFYUpQg==}
+
   source-map-js@1.2.4:
     resolution: {integrity: sha512-J7ZjMvHd9O1fcT/5V09QWaaSl2BbWx3F6O08spde82Namf9UB0GxRVIPiNbVsdKkoizHiSpTodo3vp2bAy91MA==}
     engines: {node: '>=6.0.0'}
@@ -744,6 +750,8 @@ snapshots:
       '@rolldown/binding-win32-x64-msvc': 1.2.19
 
   select2@4.1.1: {}
+
+  simpledotcss@2.3.7: {}
 
   source-map-js@1.2.4: {}
 
